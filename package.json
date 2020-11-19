@@ -6,8 +6,8 @@
   "author": "b.dybowski@gmail.com",
   "license": "MIT",
   "scripts": {
-    "clear": "rimraf ./build",
-    "start": "npm run clear && webpack && node ./build/server.js"
+    "build": "webpack --mode production",
+    "start": "npm run build && node ./build/server.js"
   },
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
