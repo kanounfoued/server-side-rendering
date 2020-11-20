@@ -10,6 +10,9 @@ import { StaticRouter } from "react-router";
 import Html from "./components/Html";
 import App from "./components/App";
 
+import LDimg from "./assets/LD.png";
+import LDDotimg from "./assets/LDRedDot.png";
+
 const app = express();
 
 app.use(express.static(path.join(__dirname)));
@@ -30,12 +33,7 @@ app.get("*", async (req, res) => {
         content="this is about page that describe what our company does."
       ></meta>
     );
-    metas.push(
-      <meta
-        property="og:image"
-        content={`${__dirname}/assets/LD.png`}
-      ></meta>
-    );
+    metas.push(<meta property="og:image" content={LDimg}></meta>);
     metas.push(<meta property="og:url" content={req.url}></meta>);
   } else {
     metas.push(<meta property="og:title" content="Home page"></meta>);
@@ -45,12 +43,7 @@ app.get("*", async (req, res) => {
         content="this is home page that describe what our company sells."
       ></meta>
     );
-    metas.push(
-      <meta
-        property="og:image"
-        content={`${__dirname}/assets/LDRedDot.png`}
-      ></meta>
-    );
+    metas.push(<meta property="og:image" content={LDDotimg}></meta>);
     metas.push(<meta property="og:url" content={req.url}></meta>);
   }
 
