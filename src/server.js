@@ -33,7 +33,7 @@ app.get("*", async (req, res) => {
     metas.push(
       <meta
         property="og:image"
-        content={`${__dirname}/../assets/LD.png`}
+        content={`${__dirname}/assets/LD.png`}
       ></meta>
     );
     metas.push(<meta property="og:url" content={req.url}></meta>);
@@ -48,13 +48,19 @@ app.get("*", async (req, res) => {
     metas.push(
       <meta
         property="og:image"
-        content={`${__dirname}/../assets/LDRedDot.png`}
+        content={`${__dirname}/assets/LDRedDot.png`}
       ></meta>
     );
     metas.push(<meta property="og:url" content={req.url}></meta>);
   }
 
-  const appMarkup = ReactDOMServer.renderToString();
+  const appMarkup = ReactDOMServer.renderToString(
+    <StaticRouter location={req.url} context={{}}>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </StaticRouter>
+  );
   const html = ReactDOMServer.renderToStaticMarkup(
     <Html
       children={appMarkup}
